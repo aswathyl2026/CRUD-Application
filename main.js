@@ -1,9 +1,16 @@
-const user=[]
+//
 //get form and tbody
 const form=document.getElementById("userForm")
 const tablebody=document.getElementById("tablebody")
 const editInput=document.getElementById("editIndex")
 //add entry to users
+if(sessionStorage.getItem("user")){
+    user=JSON.parse(sessionStorage.getItem("user"))
+    displayUser()
+}
+else{
+    const user=[]
+}
 form.addEventListener("submit",(e)=>{
     e.preventDefault()
     const name=document.getElementById("name").value
@@ -16,13 +23,16 @@ form.addEventListener("submit",(e)=>{
     }
     form.reset()
     console.log(user);
+    sessionStorage.setItem("user",JSON.stringify(user))
+   
     displayUser()
     
 })
 
 //list users on to table
-const displayUser=()=>{
+function displayUser(){
 tablebody.innerHTML=""
+//let user=JSON.parse(sessionStorage.getItem("user"))
 user.forEach((user,index)=>{
 tablebody.innerHTML+=
 `<tr>
@@ -48,6 +58,8 @@ const edit=(index)=>{
 const del=(index)=>{
 if(confirm("Are you sure,you want to remove the user!!!!")){
     user.splice(index,1)
+    //insert user to storage
+    sessionStorage.setItem("user",JSON.stringify(user))
     displayUser()
 }
 }
