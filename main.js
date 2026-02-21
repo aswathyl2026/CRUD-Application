@@ -1,4 +1,4 @@
-//
+//const user=[]
 //get form and tbody
 const form=document.getElementById("userForm")
 const tablebody=document.getElementById("tablebody")
@@ -8,9 +8,7 @@ if(sessionStorage.getItem("user")){
     user=JSON.parse(sessionStorage.getItem("user"))
     displayUser()
 }
-else{
-    const user=[]
-}
+
 form.addEventListener("submit",(e)=>{
     e.preventDefault()
     const name=document.getElementById("name").value
