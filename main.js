@@ -1,4 +1,4 @@
-//const user=[]
+let user=[]
 //get form and tbody
 const form=document.getElementById("userForm")
 const tablebody=document.getElementById("tablebody")
